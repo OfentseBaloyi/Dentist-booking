@@ -1,0 +1,45 @@
+
+body {
+  @apply font-sans bg-gradient-to-br from-purple-100 via-pink-100 to-yellow-50;
+  margin: 0;
+  padding: 0;
+}
+
+
+#root {
+  @apply min-h-screen flex flex-col justify-start items-center p-8;
+}
+
+
+h1 {
+  @apply text-5xl font-extrabold text-purple-700 text-center mb-10;
+}
+
+h2 {
+  @apply text-3xl font-bold text-purple-600 mb-4;
+}
+
+
+input {
+  @apply border-2 border-purple-300 rounded-lg p-3 w-full mb-3 focus:outline-none focus:ring-1 focus:ring-purple-300 focus:border-purple-500 transition;
+}
+
+
+button {
+  @apply bg-purple-500 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg w-full transition duration-300;
+}
+
+
+ul li {
+  @apply flex justify-between items-center p-4 border rounded-lg shadow-sm bg-purple-50 hover:bg-purple-100 transition;
+}
+
+
+ul li.text-gray-500 {
+  @apply italic;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
