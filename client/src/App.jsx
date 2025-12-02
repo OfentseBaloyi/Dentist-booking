@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
+const BACKEND_URL = "https://dentist-booking-api.onrender.com"; // <- your Render URL
+
 export default function App() {
   const [bookings, setBookings] = useState([]);
   const [form, setForm] = useState({ name: "", date: "", time: "" });
 
   const fetchBookings = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/bookings");
+      const res = await fetch(`${BACKEND_URL}/api/bookings`);
       const data = await res.json();
       setBookings(data);
     } catch (err) {
@@ -21,7 +23,7 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/bookings", {
+      const res = await fetch(`${BACKEND_URL}/api/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -42,7 +44,7 @@ export default function App() {
       </h1>
 
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
-      {/* Booking Form */}
+        {/* Booking Form */}
         <form className="mb-8 space-y-4" onSubmit={handleSubmit}>
           <input
             className="border-2 border-purple-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-300 rounded-lg p-3 w-full transition"
@@ -70,7 +72,6 @@ export default function App() {
           </button>
         </form>
 
-        
         <h2 className="text-3xl font-bold text-purple-600 mb-4">Upcoming Bookings</h2>
         <ul className="space-y-3">
           {bookings.length === 0 && (
