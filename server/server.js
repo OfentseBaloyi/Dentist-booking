@@ -3,19 +3,18 @@ import cors from "cors";
 
 const app = express();
 
-// ✅ ENABLE CORS FIRST (very important)
+
 app.use(
   cors({
     origin: [
-      "https://dentisttbo.netlify.app",  // your frontend
-      "https://dentist-booking-api.onrender.com"  // render backend (health checks)
+      "https://dentistttt.netlify.app/",  // frontend
+      "https://dentist-booking-api.onrender.com"  // render backend 
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
   })
 );
 
-// Handles preflight requests (Fixes POST blocked by CORS)
 app.options("*", cors());
 
 app.use(express.json());
@@ -24,10 +23,10 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// In-memory storage
+
 let bookings = [];
 
-// GET bookings
+
 app.get("/api/bookings", (req, res) => {
   res.json(bookings);
 });
